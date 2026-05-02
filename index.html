@@ -25,8 +25,9 @@
             padding: 20px 8%; background: white; position: sticky; top: 0; z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        .logo { font-weight: 800; font-size: 1.4rem; color: var(--primary); }
+        .logo { font-weight: 800; font-size: 1.4rem; color: var(--primary); cursor: pointer; }
         .nav-links { display: flex; gap: 20px; }
+        .nav-links a { cursor: pointer; font-weight: 600; }
         .nav-links a:hover { color: var(--primary); }
 
         /* Sections */
@@ -43,117 +44,146 @@
         .hero-text h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; color: #111827; }
         .hero-img img { width: 450px; border-radius: 30px; box-shadow: 20px 20px 60px rgba(0,0,0,0.1); }
 
-        /* 2. Môn học & 3. Lịch học & 5. Học phí */
+        /* Info Cards */
         .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .info-card { background: var(--light-gray); padding: 30px; border-radius: 20px; border: 1px solid #eee; transition: 0.3s; }
         .info-card:hover { transform: translateY(-5px); border-color: var(--primary); background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .price-tag { font-size: 1.5rem; font-weight: 800; color: var(--secondary); margin-top: 10px; display: block; }
 
-        /* 4. Giáo viên */
+        /* Teachers */
         .teachers { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
         .teacher-box { display: flex; align-items: center; gap: 20px; background: white; padding: 25px; border-radius: 25px; border: 1px solid #eee; }
         .teacher-box img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); }
         .badge { background: #e0e7ff; color: var(--primary); padding: 4px 12px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; }
 
-        /* 7. Đăng ký & Form (Nút Google Form) */
+        /* Form Buttons */
         .form-section { text-align: center; background: #fdf2f8; border-radius: 40px; padding: 60px 20px; }
         .btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px; }
         .btn-form { 
             padding: 15px 35px; border-radius: 15px; font-weight: 700; transition: 0.3s; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: inline-block; cursor: pointer;
         }
         .btn-reg { background: var(--primary); color: white; }
         .btn-leave { background: #374151; color: white; }
         .btn-feed { background: white; color: var(--text); border: 1px solid #ddd; }
         .btn-form:hover { transform: scale(1.05); opacity: 0.9; }
 
-        /* Footer & Liên hệ */
-        footer { background: #111827; color: white; padding: 60px 8% 20px; border-radius: 50px 50px 0 0; }
+        /* FAQ Page Styling */
+        .hidden { display: none !important; }
+        #faq-page { padding: 50px 8%; background: #f8fafc; min-height: 100vh; }
+        .faq-container { max-width: 900px; margin: 0 auto; }
+        .faq-search {
+            width: 100%; padding: 15px 25px; border-radius: 15px; border: 2px solid #e2e8f0;
+            margin-bottom: 30px; font-size: 1rem; outline: none; transition: 0.3s;
+        }
+        .faq-search:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
+        .faq-item { background: white; margin-bottom: 12px; border-radius: 15px; border: 1px solid #e2e8f0; overflow: hidden; }
+        .faq-question {
+            width: 100%; padding: 20px; display: flex; justify-content: space-between; align-items: center;
+            background: none; border: none; cursor: pointer; text-align: left; font-weight: 600; font-size: 1.05rem; color: var(--text);
+        }
+        .faq-answer { max-height: 0; overflow: hidden; transition: all 0.3s ease; padding: 0 20px; color: #4b5563; background: #fff; }
+        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 20px; }
+        .faq-item.active { border-color: var(--primary); }
+        .faq-icon { color: var(--primary); font-size: 1.2rem; transition: 0.3s; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .back-home { margin-bottom: 20px; color: var(--primary); display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; }
+
+        /* Footer */
+        footer { background: #111827; color: white; padding: 60px 8% 20px; border-radius: 50px 50px 0 0; margin-top: 50px; }
         .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 40px; }
 
         @media (max-width: 768px) {
             .hero { flex-direction: column; text-align: center; }
             .hero-img img { width: 100%; margin-top: 40px; }
-            .teachers { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
+            .teachers, .footer-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">GIA SƯ NGỌC TRÂM</div>
+        <div class="logo" onclick="showPage('home')">GIA SƯ NGỌC TRÂM</div>
         <ul class="nav-links">
-            <li><a href="#home">Trang chủ</a></li>
-            <li><a href="#subjects">Môn học</a></li>
-            <li><a href="#teachers">Giáo viên</a></li>
+            <li><a onclick="showPage('home')">Trang chủ</a></li>
+            <li><a onclick="showPage('faq')">Hỏi Đáp (FAQ)</a></li>
             <li><a href="#register">Liên hệ</a></li>
         </ul>
     </nav>
 
-    <section class="hero" id="home">
-        <div class="hero-text">
-            <h1>Học tập <span style="color: var(--primary);">đúng cách</span>, tương lai vững vàng.</h1>
-            <p>Đội ngũ gia sư chất lượng cao, cam kết mang lại kết quả vượt trội cho học sinh lớp 6-9.</p>
-        </div>
-        <div class="hero-img">
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop" alt="Learning">
-        </div>
-    </section>
+    <div id="main-content">
+        <section class="hero" id="home">
+            <div class="hero-text">
+                <h1>Học tập <span style="color: var(--primary);">đúng cách</span>, tương lai vững vàng.</h1>
+                <p>Đội ngũ gia sư chất lượng cao, cam kết mang lại kết quả vượt trội cho học sinh lớp 6-9.</p>
+            </div>
+            <div class="hero-img">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop" alt="Learning">
+            </div>
+        </section>
 
-    <section id="subjects">
-        <h2 class="section-title">Thông Tin Lớp Học</h2>
-        <div class="info-grid">
-            <div class="info-card">
-                <h3>📚 Môn Học</h3>
-                <p>Toán, Lý, Hóa. Luyện thi chuyển cấp và rèn luyện chữ đẹp.</p>
-            </div>
-            <div class="info-card">
-                <h3>⏰ Lịch Học</h3>
-                <p>Thứ 2 - Chủ Nhật<br>Thời gian có thể trao đổi thêm khi gia sư liên hệ</p>
-            </div>
-            <div class="info-card">
-                <h3>💰 Học Phí</h3>
-                <p>Chi phí hợp lý, thanh toán theo tháng hoặc theo buổi học.</p>
-                <span class="price-tag">Báo giá khi liên hệ gia sư</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="teachers" style="background-color: var(--light-gray);">
-        <h2 class="section-title">Đội Ngũ Gia Sư</h2>
-        <div class="teachers">
-            <div class="teacher-box">
-                
-                <div>
-                    <span class="badge">Dược sĩ Đại học</span>
-                    <h3>Cô Ngọc Trâm</h3>
-                    <p>Phụ trách Hóa - Sinh-Lí. Kinh nghiệm giảng dạy tư duy khoa học và thực tiễn.</p>
+        <section id="subjects">
+            <h2 class="section-title">Thông Tin Lớp Học</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>📚 Môn Học</h3>
+                    <p>Toán, Lý, Hóa. Luyện thi chuyển cấp và rèn luyện chữ đẹp.</p>
+                </div>
+                <div class="info-card">
+                    <h3>⏰ Lịch Học</h3>
+                    <p>Thứ 2 - Chủ Nhật<br>Thời gian có thể trao đổi thêm khi gia sư liên hệ</p>
+                </div>
+                <div class="info-card">
+                    <h3>💰 Học Phí</h3>
+                    <p>Chi phí hợp lý, thanh toán theo tháng hoặc theo buổi học.</p>
+                    <span class="price-tag">Báo giá khi liên hệ gia sư</span>
                 </div>
             </div>
-            <div class="teacher-box">
-                
-                <div>
-                    <span class="badge" style="background: #fdf2f8; color: var(--secondary);">Giáo viên Toán</span>
-                    <h3>Cô Ngọc Lan</h3>
-                    <p>Phụ trách Toán học cơ bản & nâng cao. Giúp học sinh yếu môn Toán từ con số 0.</p>
+        </section>
+
+        <section id="teachers" style="background-color: var(--light-gray);">
+            <h2 class="section-title">Đội Ngũ Gia Sư</h2>
+            <div class="teachers">
+                <div class="teacher-box">
+                    <div>
+                        <span class="badge">Dược sĩ Đại học</span>
+                        <h3>Cô Ngọc Trâm</h3>
+                        <p>Phụ trách Hóa - Sinh - Lí. Kinh nghiệm giảng dạy tư duy khoa học và thực tiễn.</p>
+                    </div>
+                </div>
+                <div class="teacher-box">
+                    <div>
+                        <span class="badge" style="background: #fdf2f8; color: var(--secondary);">Giáo viên Toán</span>
+                        <h3>Cô Ngọc Lan</h3>
+                        <p>Phụ trách Toán học cơ bản & nâng cao. Giúp học sinh yếu môn Toán từ con số 0.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="register">
-        <div class="form-section">
-            <h2 class="section-title" style="margin-bottom: 10px;">Kết Nối Với Chúng Mình</h2>
-            <p>Chọn mục bạn muốn để thực hiện nhanh qua Google Form</p>
+        <section id="register">
+            <div class="form-section">
+                <h2 class="section-title" style="margin-bottom: 10px;">Kết Nối Với Chúng Mình</h2>
+                <p>Chọn mục bạn muốn để thực hiện nhanh qua Google Form</p>
+                <div class="btn-group">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNJI_jTbnxgTdzbI_wMSOASiErqsiO53i3o1jMgbSTNY8zkQ/viewform?usp=publish-editor" class="btn-form btn-reg">📝 ĐĂNG KÝ HỌC</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScejlUrdLJEnDn1-F1kZlY4lRTklFqzpmocsKWRw_Z6Tgr7TQ/viewform?usp=publish-editor" class="btn-form btn-feed">⭐ GỬI ĐÁNH GIÁ</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSechlu5GihR8lxfnImShoT3B_ethjTDtvBOO6kvdcbRIVCJbQ/viewform?usp=publish-editor" target="_blank" class="btn-form btn-leave">🛌 XIN NGHỈ HỌC</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="faq-page" class="hidden">
+        <div class="faq-container">
+            <div class="back-home" onclick="showPage('home')">← Quay lại trang chủ</div>
+            <h2 class="section-title">Hỏi Đáp Thường Gặp</h2>
+            <input type="text" id="faqSearch" class="faq-search" placeholder="Nhập từ khóa cần tìm (vd: học phí, online...)" onkeyup="filterFAQ()">
             
-            <div class="btn-group">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNJI_jTbnxgTdzbI_wMSOASiErqsiO53i3o1jMgbSTNY8zkQ/viewform?usp=publish-editor">📝 ĐĂNG KÝ HỌC</a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScejlUrdLJEnDn1-F1kZlY4lRTklFqzpmocsKWRw_Z6Tgr7TQ/viewform?usp=publish-editor">⭐ GỬI ĐÁNH GIÁ (FEEDBACK)</a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSechlu5GihR8lxfnImShoT3B_ethjTDtvBOO6kvdcbRIVCJbQ/viewform?usp=publish-editor" target="_blank" class="btn-form btn-leave">🛌 XIN NGHỈ HỌC</a>
-            </div>
+            <div id="faqList">
+                </div>
         </div>
-    </section>
+    </div>
 
     <footer>
         <div class="footer-grid">
@@ -161,13 +191,10 @@
                 <h2 style="color: var(--primary); margin-bottom: 20px;">GIA SƯ NGỌC TRÂM</h2>
                 <p>Nơi trao gửi niềm tin, gặt hái tri thức. Chúng tôi tự hào đồng hành cùng thế hệ trẻ Việt Nam.</p>
             </div>
-          <script>!function(s,u,b,i,z){var o,t,r,y;s[i]||(s._sbzaccid=z,s[i]=function(){s[i].q.push(arguments)},s[i].q=[],s[i]("setAccount",z),r=["widget.subiz.net","storage.googleapis"+(t=".com"),"app.sbz.workers.dev",i+"a"+(o=function(k,t){var n=t<=6?5:o(k,t-1)+o(k,t-3);return k!==t?n:n.toString(32)})(20,20)+t,i+"b"+o(30,30)+t,i+"c"+o(40,40)+t],(y=function(k){var t,n;s._subiz_init_2094850928430||r[k]&&(t=u.createElement(b),n=u.getElementsByTagName(b)[0],t.async=1,t.src="https://"+r[k]+"/sbz/app.js?accid="+z,n.parentNode.insertBefore(t,n),setTimeout(y,2e3,k+1))})(0))}(window,document,"script","subiz", "acsqiwmbnyhvwszkiwaq")</script>
             <div>
                 <h3>Thông Tin Liên Hệ</h3>
                 <p style="margin-top: 15px;">📍 Địa chỉ: Khu phố 3 ,Minh Thành,Chơn Thành,Đồng Nai</p>
-                <a href="tel:0967737207">Gọi ngay,xin quý phụ huynh,học sinh ấn vào chữ này</a>
-                
-              
+                <a href="tel:0967737207" style="color: var(--secondary); font-weight: bold;">📞 Gọi ngay: 0967.737.207</a>
             </div>
         </div>
         <div style="text-align: center; border-top: 1px solid #333; padding-top: 20px; font-size: 0.8rem; color: #666;">
@@ -175,5 +202,101 @@
         </div>
     </footer>
 
+    <script>!function(s,u,b,i,z){var o,t,r,y;s[i]||(s._sbzaccid=z,s[i]=function(){s[i].q.push(arguments)},s[i].q=[],s[i]("setAccount",z),r=["widget.subiz.net","storage.googleapis"+(t=".com"),"app.sbz.workers.dev",i+"a"+(o=function(k,t){var n=t<=6?5:o(k,t-1)+o(k,t-3);return k!==t?n:n.toString(32)})(20,20)+t,i+"b"+o(30,30)+t,i+"c"+o(40,40)+t],(y=function(k){var t,n;s._subiz_init_2094850928430||r[k]&&(t=u.createElement(b),n=u.getElementsByTagName(b)[0],t.async=1,t.src="https://"+r[k]+"/sbz/app.js?accid="+z,n.parentNode.insertBefore(t,n),setTimeout(y,2e3,k+1))})(0))}(window,document,"script","subiz", "acsqiwmbnyhvwszkiwaq")</script>
+
+    <script>
+        // Dữ liệu 50 câu hỏi
+        const faqData = [
+            { q: "1. Trung tâm này dạy những môn nào?", a: "Toán, Lý, Hóa, Văn, Anh (tùy trung tâm)." },
+            { q: "2. Có lớp ôn thi kiểm tra 15 phút/1 tiết không?", a: "Có, luyện đầy đủ theo chương trình trên lớp." },
+            { q: "3. Có luyện thi chuyển cấp không?", a: "Có, luyện thi vào 10 và 12." },
+            { q: "4. Lớp có đông không?", a: "Thường 10–25 học sinh/lớp." },
+            { q: "5. Một buổi học bao lâu?", a: "Khoảng 90–120 phút." },
+            { q: "6. Có chọn giáo viên không?", a: "Một số trung tâm có cho chọn." },
+            { q: "7. Thầy cô có dễ hiểu không?", a: "Có, đa số dạy dễ hiểu và chi tiết." },
+            { q: "8. Có sửa bài kỹ không?", a: "Có, chữa từng câu cho học sinh." },
+            { q: "9. Có bài tập về nhà không?", a: "Có, giao theo mức độ từng học sinh." },
+            { q: "10. Có kiểm tra định kỳ không?", a: "Có, kiểm tra hàng tuần/tháng." },
+            { q: "11. Không hiểu bài có hỏi lại được không?", a: "Được, hỏi trực tiếp tại lớp." },
+            { q: "12. Có học bù không?", a: "Một số trung tâm có hỗ trợ học bù." },
+            { q: "13. Có chia lớp theo trình độ không?", a: "Có, chia theo yếu – trung bình – giỏi." },
+            { q: "14. Có lớp nâng cao không?", a: "Có." },
+            { q: "15. Có lớp cho học sinh yếu không?", a: "Có lớp căn bản." },
+            { q: "16. Có tài liệu riêng không?", a: "Có tài liệu do trung tâm biên soạn." },
+            { q: "17. Có mẹo làm bài nhanh không?", a: "Có." },
+            { q: "18. Có luyện đề thật không?", a: "Có." },
+            { q: "19. Có học online không?", a: "Có cả online và offline." },
+            { q: "20. Có video xem lại không?", a: "Một số trung tâm có." },
+            { q: "21. Có đổi lớp không phù hợp không?", a: "Có thể đổi." },
+            { q: "22. Có áp lực học không?", a: "Không quá áp lực, có lộ trình phù hợp." },
+            { q: "23. Có thi thử không?", a: "Có." },
+            { q: "24. Có kèm riêng không?", a: "Có lớp 1 kèm 1." },
+            { q: "25. Có hỗ trợ mất gốc không?", a: "Có." },
+            { q: "26. Học phí bao nhiêu?", a: "Khoảng 1–3 triệu/tháng." },
+            { q: "27. Đóng theo buổi hay tháng?", a: "Theo tháng hoặc khóa." },
+            { q: "28. Có giảm học phí không?", a: "Có ưu đãi." },
+            { q: "29. Có cam kết điểm không?", a: "Không cam kết điểm tuyệt đối." },
+            { q: "30. Giáo viên có kinh nghiệm không?", a: "Có, nhiều giáo viên lâu năm." },
+            { q: "31. Trung tâm có giấy phép không?", a: "Trung tâm uy tín thì có." },
+            { q: "32. Có an toàn không?", a: "Có giám sát, đảm bảo an toàn." },
+            { q: "33. Lịch học có linh hoạt không?", a: "Có buổi tối và cuối tuần." },
+            { q: "34. Có nhồi nhét không?", a: "Không, học theo lộ trình." },
+            { q: "35. Có theo dõi học sinh không?", a: "Có." },
+            { q: "36. Có báo cáo kết quả không?", a: "Có gửi phụ huynh." },
+            { q: "37. Có liên hệ phụ huynh không?", a: "Có qua Zalo/điện thoại." },
+            { q: "38. Có dạy nâng cao không?", a: "Có." },
+            { q: "39. Có giữ học sinh quá giờ không?", a: "Không." },
+            { q: "40. Con yếu có theo kịp không?", a: "Có lớp riêng hỗ trợ." },
+            { q: "41. Có cam kết đầu ra không?", a: "Cam kết tiến bộ." },
+            { q: "42. Có lớp 1 kèm 1 không?", a: "Có." },
+            { q: "43. Có hỗ trợ tâm lý không?", a: "Một số nơi có." },
+            { q: "44. Có dạy kỹ năng thi không?", a: "Có." },
+            { q: "45. Trung tâm có uy tín không?", a: "Tùy trung tâm." },
+            { q: "46. Có học thử không?", a: "Có 1–2 buổi." },
+            { q: "47. Có hoàn tiền không?", a: "Một số trung tâm có." },
+            { q: "48. Có lớp buổi tối không?", a: "Có." },
+            { q: "49. Có lớp cuối tuần không?", a: "Có." },
+            { q: "50. Có gần nhà không?", a: "Tùy cơ sở." }
+        ];
+
+        // Render FAQ
+        const faqList = document.getElementById('faqList');
+        faqData.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'faq-item';
+            div.innerHTML = `
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                    ${item.q} <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">${item.a}</div>
+            `;
+            faqList.appendChild(div);
+        });
+
+        // Chuyển trang
+        function showPage(pageId) {
+            const home = document.getElementById('main-content');
+            const faq = document.getElementById('faq-page');
+            if(pageId === 'faq') {
+                home.classList.add('hidden');
+                faq.classList.remove('hidden');
+                window.scrollTo(0,0);
+            } else {
+                faq.classList.add('hidden');
+                home.classList.remove('hidden');
+                window.scrollTo(0,0);
+            }
+        }
+
+        // Tìm kiếm FAQ
+        function filterFAQ() {
+            const input = document.getElementById('faqSearch').value.toLowerCase();
+            const items = document.querySelectorAll('.faq-item');
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                item.style.display = text.includes(input) ? "block" : "none";
+            });
+        }
+    </script>
 </body>
 </html>
