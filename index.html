@@ -9,6 +9,8 @@
         :root {
             --primary: #4f46e5;
             --secondary: #ec4899;
+            --holiday-red: #da251d; /* Màu đỏ cờ */
+            --holiday-yellow: #ffff00;
             --text: #1f2937;
             --bg: #ffffff;
             --light-gray: #f9fafb;
@@ -30,15 +32,29 @@
         .nav-links a { cursor: pointer; font-weight: 600; }
         .nav-links a:hover { color: var(--primary); }
 
+        /* Holiday Banner */
+        .holiday-banner {
+            background: linear-gradient(rgba(218, 37, 29, 0.9), rgba(218, 37, 29, 0.9)), 
+                        url('https://images.unsplash.com/photo-1555848962-6e79363ec58f?q=80&w=2066&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 40px 8%;
+            text-align: center;
+            border-bottom: 5px solid var(--holiday-yellow);
+        }
+        .holiday-banner h2 { font-size: 2rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
+        .holiday-banner p { font-size: 1.1rem; font-weight: 400; opacity: 0.9; }
+
         /* Sections */
-        section { padding: 80px 8%; }
+        section { padding: 60px 8%; }
         .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 40px; font-weight: 800; }
 
-        /* 1. Trang Chủ */
+        /* Hero */
         .hero {
             display: flex; align-items: center; justify-content: space-between;
             background: linear-gradient(120deg, #eef2ff 0%, #fce7f3 100%);
-            padding: 100px 8%; border-radius: 0 0 50px 50px;
+            padding: 80px 8%; border-radius: 0 0 50px 50px;
         }
         .hero-text { max-width: 500px; }
         .hero-text h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; color: #111827; }
@@ -53,7 +69,6 @@
         /* Teachers */
         .teachers { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
         .teacher-box { display: flex; align-items: center; gap: 20px; background: white; padding: 25px; border-radius: 25px; border: 1px solid #eee; }
-        .teacher-box img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); }
         .badge { background: #e0e7ff; color: var(--primary); padding: 4px 12px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; }
 
         /* Form Buttons */
@@ -76,7 +91,6 @@
             width: 100%; padding: 15px 25px; border-radius: 15px; border: 2px solid #e2e8f0;
             margin-bottom: 30px; font-size: 1rem; outline: none; transition: 0.3s;
         }
-        .faq-search:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
         .faq-item { background: white; margin-bottom: 12px; border-radius: 15px; border: 1px solid #e2e8f0; overflow: hidden; }
         .faq-question {
             width: 100%; padding: 20px; display: flex; justify-content: space-between; align-items: center;
@@ -84,7 +98,6 @@
         }
         .faq-answer { max-height: 0; overflow: hidden; transition: all 0.3s ease; padding: 0 20px; color: #4b5563; background: #fff; }
         .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 20px; }
-        .faq-item.active { border-color: var(--primary); }
         .faq-icon { color: var(--primary); font-size: 1.2rem; transition: 0.3s; }
         .faq-item.active .faq-icon { transform: rotate(45deg); }
         .back-home { margin-bottom: 20px; color: var(--primary); display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; }
@@ -97,6 +110,7 @@
             .hero { flex-direction: column; text-align: center; }
             .hero-img img { width: 100%; margin-top: 40px; }
             .teachers, .footer-grid { grid-template-columns: 1fr; }
+            .holiday-banner h2 { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -112,6 +126,11 @@
     </nav>
 
     <div id="main-content">
+        <div class="holiday-banner">
+            <h2>🇻🇳 Chào mừng Đại lễ 30/4 - 1/5 🇻🇳</h2>
+            <p>Kỷ niệm 51 năm Ngày Giải phóng miền Nam & Quốc tế Lao động. Gia sư Ngọc Trâm chúc quý phụ huynh và học sinh kỳ nghỉ lễ hạnh phúc!</p>
+        </div>
+
         <section class="hero" id="home">
             <div class="hero-text">
                 <h1>Học tập <span style="color: var(--primary);">đúng cách</span>, tương lai vững vàng.</h1>
@@ -148,7 +167,7 @@
                     <div>
                         <span class="badge">Dược sĩ Đại học</span>
                         <h3>Cô Ngọc Trâm</h3>
-                        <p>Phụ trách Hóa - Sinh - Lí. Kinh nghiệm giảng dạy tư duy khoa học và thực tiễn.</p>
+                        <p>Phụ trách Hóa - Sinh-Lí. Kinh nghiệm giảng dạy tư duy khoa học và thực tiễn.</p>
                     </div>
                 </div>
                 <div class="teacher-box">
@@ -178,10 +197,8 @@
         <div class="faq-container">
             <div class="back-home" onclick="showPage('home')">← Quay lại trang chủ</div>
             <h2 class="section-title">Hỏi Đáp Thường Gặp</h2>
-            <input type="text" id="faqSearch" class="faq-search" placeholder="Nhập từ khóa cần tìm (vd: học phí, online...)" onkeyup="filterFAQ()">
-            
-            <div id="faqList">
-                </div>
+            <input type="text" id="faqSearch" class="faq-search" placeholder="Nhập từ khóa cần tìm..." onkeyup="filterFAQ()">
+            <div id="faqList"></div>
         </div>
     </div>
 
@@ -205,7 +222,6 @@
     <script>!function(s,u,b,i,z){var o,t,r,y;s[i]||(s._sbzaccid=z,s[i]=function(){s[i].q.push(arguments)},s[i].q=[],s[i]("setAccount",z),r=["widget.subiz.net","storage.googleapis"+(t=".com"),"app.sbz.workers.dev",i+"a"+(o=function(k,t){var n=t<=6?5:o(k,t-1)+o(k,t-3);return k!==t?n:n.toString(32)})(20,20)+t,i+"b"+o(30,30)+t,i+"c"+o(40,40)+t],(y=function(k){var t,n;s._subiz_init_2094850928430||r[k]&&(t=u.createElement(b),n=u.getElementsByTagName(b)[0],t.async=1,t.src="https://"+r[k]+"/sbz/app.js?accid="+z,n.parentNode.insertBefore(t,n),setTimeout(y,2e3,k+1))})(0))}(window,document,"script","subiz", "acsqiwmbnyhvwszkiwaq")</script>
 
     <script>
-        // Dữ liệu 50 câu hỏi
         const faqData = [
             { q: "1. Trung tâm này dạy những môn nào?", a: "Toán, Lý, Hóa, Văn, Anh (tùy trung tâm)." },
             { q: "2. Có lớp ôn thi kiểm tra 15 phút/1 tiết không?", a: "Có, luyện đầy đủ theo chương trình trên lớp." },
@@ -259,7 +275,6 @@
             { q: "50. Có gần nhà không?", a: "Tùy cơ sở." }
         ];
 
-        // Render FAQ
         const faqList = document.getElementById('faqList');
         faqData.forEach(item => {
             const div = document.createElement('div');
@@ -273,7 +288,6 @@
             faqList.appendChild(div);
         });
 
-        // Chuyển trang
         function showPage(pageId) {
             const home = document.getElementById('main-content');
             const faq = document.getElementById('faq-page');
@@ -288,7 +302,6 @@
             }
         }
 
-        // Tìm kiếm FAQ
         function filterFAQ() {
             const input = document.getElementById('faqSearch').value.toLowerCase();
             const items = document.querySelectorAll('.faq-item');
