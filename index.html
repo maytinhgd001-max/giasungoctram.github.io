@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gia Sư Ngọc Trâm | Giáo Dục Tận Tâm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --secondary: #ec4899;
+            --text: #1f2937;
+            --bg: #ffffff;
+            --light-gray: #f9fafb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* Navigation */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 8%; background: white; position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .logo { font-weight: 800; font-size: 1.4rem; color: var(--primary); }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Sections */
+        section { padding: 80px 8%; }
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 40px; font-weight: 800; }
+
+        /* 1. Trang Chủ */
+        .hero {
+            display: flex; align-items: center; justify-content: space-between;
+            background: linear-gradient(120deg, #eef2ff 0%, #fce7f3 100%);
+            padding: 100px 8%; border-radius: 0 0 50px 50px;
+        }
+        .hero-text { max-width: 500px; }
+        .hero-text h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; color: #111827; }
+        .hero-img img { width: 450px; border-radius: 30px; box-shadow: 20px 20px 60px rgba(0,0,0,0.1); }
+
+        /* 2. Môn học & 3. Lịch học & 5. Học phí */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .info-card { background: var(--light-gray); padding: 30px; border-radius: 20px; border: 1px solid #eee; transition: 0.3s; }
+        .info-card:hover { transform: translateY(-5px); border-color: var(--primary); background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .price-tag { font-size: 1.5rem; font-weight: 800; color: var(--secondary); margin-top: 10px; display: block; }
+
+        /* 4. Giáo viên */
+        .teachers { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .teacher-box { display: flex; align-items: center; gap: 20px; background: white; padding: 25px; border-radius: 25px; border: 1px solid #eee; }
+        .teacher-box img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); }
+        .badge { background: #e0e7ff; color: var(--primary); padding: 4px 12px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; }
+
+        /* 7. Đăng ký & Form (Nút Google Form) */
+        .form-section { text-align: center; background: #fdf2f8; border-radius: 40px; padding: 60px 20px; }
+        .btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px; }
+        .btn-form { 
+            padding: 15px 35px; border-radius: 15px; font-weight: 700; transition: 0.3s; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: inline-block;
+        }
+        .btn-reg { background: var(--primary); color: white; }
+        .btn-leave { background: #374151; color: white; }
+        .btn-feed { background: white; color: var(--text); border: 1px solid #ddd; }
+        .btn-form:hover { transform: scale(1.05); opacity: 0.9; }
+
+        /* Footer & Liên hệ */
+        footer { background: #111827; color: white; padding: 60px 8% 20px; border-radius: 50px 50px 0 0; }
+        .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 40px; }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; }
+            .hero-img img { width: 100%; margin-top: 40px; }
+            .teachers { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">NGOC TRAM CENTER</div>
+        <ul class="nav-links">
+            <li><a href="#home">Trang chủ</a></li>
+            <li><a href="#subjects">Môn học</a></li>
+            <li><a href="#teachers">Giáo viên</a></li>
+            <li><a href="#register">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h1>Học tập <span style="color: var(--primary);">đúng cách</span>, tương lai vững vàng.</h1>
+            <p>Đội ngũ gia sư chất lượng cao, cam kết mang lại kết quả vượt trội cho học sinh lớp 6-9.</p>
+        </div>
+        <div class="hero-img">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop" alt="Learning">
+        </div>
+    </section>
+
+    <section id="subjects">
+        <h2 class="section-title">Thông Tin Lớp Học</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>📚 Môn Học</h3>
+                <p>Toán, Lý, Hóa. Luyện thi chuyển cấp và rèn luyện chữ đẹp.</p>
+            </div>
+            <div class="info-card">
+                <h3>⏰ Lịch Học</h3>
+                <p>Thứ 2 - Chủ Nhật<br>Thời gian có thể trao đổi thêm khi gia sư liên hệ</p>
+            </div>
+            <div class="info-card">
+                <h3>💰 Học Phí</h3>
+                <p>Chi phí hợp lý, thanh toán theo tháng hoặc theo buổi học.</p>
+                <span class="price-tag">Từ 30.000 VND</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="teachers" style="background-color: var(--light-gray);">
+        <h2 class="section-title">Đội Ngũ Gia Sư</h2>
+        <div class="teachers">
+            <div class="teacher-box">
+                
+                <div>
+                    <span class="badge">Dược sĩ Đại học</span>
+                    <h3>Cô Ngọc Trâm</h3>
+                    <p>Phụ trách Hóa - Sinh-Lí. Kinh nghiệm giảng dạy tư duy khoa học và thực tiễn.</p>
+                </div>
+            </div>
+            <div class="teacher-box">
+                
+                <div>
+                    <span class="badge" style="background: #fdf2f8; color: var(--secondary);">Giáo viên Toán</span>
+                    <h3>Cô Ngọc Lan</h3>
+                    <p>Phụ trách Toán học cơ bản & nâng cao. Giúp học sinh yếu môn Toán từ con số 0.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="register">
+        <div class="form-section">
+            <h2 class="section-title" style="margin-bottom: 10px;">Kết Nối Với Chúng Mình</h2>
+            <p>Chọn mục bạn muốn để thực hiện nhanh qua Google Form</p>
+            
+            <div class="btn-group">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNJI_jTbnxgTdzbI_wMSOASiErqsiO53i3o1jMgbSTNY8zkQ/viewform?usp=publish-editor">📝 ĐĂNG KÝ HỌC</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScejlUrdLJEnDn1-F1kZlY4lRTklFqzpmocsKWRw_Z6Tgr7TQ/viewform?usp=publish-editor">⭐ GỬI ĐÁNH GIÁ (FEEDBACK)</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSechlu5GihR8lxfnImShoT3B_ethjTDtvBOO6kvdcbRIVCJbQ/viewform?usp=publish-editor" target="_blank" class="btn-form btn-leave">🛌 XIN NGHỈ HỌC</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h2 style="color: var(--primary); margin-bottom: 20px;">GIA SƯ NGỌC TRÂM</h2>
+                <p>Nơi trao gửi niềm tin, gặt hái tri thức. Chúng tôi tự hào đồng hành cùng thế hệ trẻ Việt Nam.</p>
+            </div>
+          <script>!function(s,u,b,i,z){var o,t,r,y;s[i]||(s._sbzaccid=z,s[i]=function(){s[i].q.push(arguments)},s[i].q=[],s[i]("setAccount",z),r=["widget.subiz.net","storage.googleapis"+(t=".com"),"app.sbz.workers.dev",i+"a"+(o=function(k,t){var n=t<=6?5:o(k,t-1)+o(k,t-3);return k!==t?n:n.toString(32)})(20,20)+t,i+"b"+o(30,30)+t,i+"c"+o(40,40)+t],(y=function(k){var t,n;s._subiz_init_2094850928430||r[k]&&(t=u.createElement(b),n=u.getElementsByTagName(b)[0],t.async=1,t.src="https://"+r[k]+"/sbz/app.js?accid="+z,n.parentNode.insertBefore(t,n),setTimeout(y,2e3,k+1))})(0))}(window,document,"script","subiz", "acsqiwmbnyhvwszkiwaq")</script>
+            <div>
+                <h3>Thông Tin Liên Hệ</h3>
+                <p style="margin-top: 15px;">📍 Địa chỉ: Khu phố 3 ,Minh Thành,Chơn Thành,Đồng Nai</p>
+                <p>📞 Hotline: 0967737207</p>
+               
+              
+            </div>
+        </div>
+        <div style="text-align: center; border-top: 1px solid #333; padding-top: 20px; font-size: 0.8rem; color: #666;">
+            © 2026 Gia Sư Ngọc Trâm Elite. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
