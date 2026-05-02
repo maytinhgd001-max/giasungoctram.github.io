@@ -9,7 +9,7 @@
         :root {
             --primary: #4f46e5;
             --secondary: #ec4899;
-            --holiday-red: #da251d; /* Màu đỏ cờ */
+            --holiday-red: #da251d;
             --holiday-yellow: #ffff00;
             --text: #1f2937;
             --bg: #ffffff;
@@ -21,101 +21,84 @@
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
 
-        /* Navigation */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 8%; background: white; position: sticky; top: 0; z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .logo { font-weight: 800; font-size: 1.4rem; color: var(--primary); cursor: pointer; }
         .nav-links { display: flex; gap: 20px; }
         .nav-links a { cursor: pointer; font-weight: 600; }
         .nav-links a:hover { color: var(--primary); }
 
-        /* Holiday Banner */
-        .holiday-banner {
-            background: linear-gradient(rgba(218, 37, 29, 0.9), rgba(218, 37, 29, 0.9)), 
-                        url('https://images.unsplash.com/photo-1555848962-6e79363ec58f?q=80&w=2066&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 40px 8%;
-            text-align: center;
-            border-bottom: 5px solid var(--holiday-yellow);
-        }
+        .holiday-banner { background: linear-gradient(rgba(218, 37, 29, 0.9), rgba(218, 37, 29, 0.9)), url('https://images.unsplash.com/photo-1555848962-6e79363ec58f?q=80&w=2066&auto=format&fit=crop'); background-size: cover; background-position: center; color: white; padding: 40px 8%; text-align: center; border-bottom: 5px solid var(--holiday-yellow); }
         .holiday-banner h2 { font-size: 2rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
         .holiday-banner p { font-size: 1.1rem; font-weight: 400; opacity: 0.9; }
 
-        /* Sections */
         section { padding: 60px 8%; }
         .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 40px; font-weight: 800; }
 
-        /* Hero */
-        .hero {
-            display: flex; align-items: center; justify-content: space-between;
-            background: linear-gradient(120deg, #eef2ff 0%, #fce7f3 100%);
-            padding: 80px 8%; border-radius: 0 0 50px 50px;
-        }
+        .hero { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(120deg, #eef2ff 0%, #fce7f3 100%); padding: 80px 8%; border-radius: 0 0 50px 50px; }
         .hero-text { max-width: 500px; }
         .hero-text h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; color: #111827; }
         .hero-img img { width: 450px; border-radius: 30px; box-shadow: 20px 20px 60px rgba(0,0,0,0.1); }
 
-        /* Info Cards */
         .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .info-card { background: var(--light-gray); padding: 30px; border-radius: 20px; border: 1px solid #eee; transition: 0.3s; }
         .info-card:hover { transform: translateY(-5px); border-color: var(--primary); background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .price-tag { font-size: 1.5rem; font-weight: 800; color: var(--secondary); margin-top: 10px; display: block; }
 
-        /* Teachers */
         .teachers { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
         .teacher-box { display: flex; align-items: center; gap: 20px; background: white; padding: 25px; border-radius: 25px; border: 1px solid #eee; }
         .badge { background: #e0e7ff; color: var(--primary); padding: 4px 12px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; }
 
-        /* Form Buttons */
         .form-section { text-align: center; background: #fdf2f8; border-radius: 40px; padding: 60px 20px; }
-        .btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px; }
-        .btn-form { 
-            padding: 15px 35px; border-radius: 15px; font-weight: 700; transition: 0.3s; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: inline-block; cursor: pointer;
-        }
+        .btn-form { padding: 15px 35px; border-radius: 15px; font-weight: 700; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: inline-block; cursor: pointer; border: none; }
         .btn-reg { background: var(--primary); color: white; }
+        .btn-reg.disabled { background: #94a3b8; cursor: not-allowed; transform: none !important; box-shadow: none; }
         .btn-leave { background: #374151; color: white; }
         .btn-feed { background: white; color: var(--text); border: 1px solid #ddd; }
-        .btn-form:hover { transform: scale(1.05); opacity: 0.9; }
 
-        /* FAQ Page Styling */
-        .hidden { display: none !important; }
+        .tab-box { background: white; border-radius: 25px; overflow: hidden; max-width: 900px; margin: 30px auto 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .tab-nav { display: flex; background: #f1f5f9; border-bottom: 1px solid #e2e8f0; overflow-x: auto; }
+        .tab-item { flex: 1; padding: 20px; border: none; background: none; font-weight: 700; cursor: pointer; color: #64748b; font-size: 0.9rem; white-space: nowrap; }
+        .tab-item.active { background: white; color: var(--primary); border-bottom: 3px solid var(--primary); }
+        .tab-pane { padding: 40px; display: none; min-height: 450px; }
+        .tab-pane.active { display: block; }
+
+        .terms-acceptance { margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 0.9rem; color: #4b5563; }
+        .terms-acceptance input { width: 18px; height: 18px; cursor: pointer; }
+        .terms-acceptance span a { color: var(--primary); text-decoration: underline; font-weight: 600; }
+
+        .qr-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; animation: fadeIn 0.5s; }
+        .qr-code-box { text-align: center; background: #f0fdf4; padding: 20px; border-radius: 20px; border: 1px dashed #10b981; position: relative; }
+        #timer { color: #ef4444; font-weight: 800; font-size: 1.2rem; margin-bottom: 10px; }
+        .hidden-step { display: none; }
+        .hidden { display: none; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
         #faq-page { padding: 50px 8%; background: #f8fafc; min-height: 100vh; }
         .faq-container { max-width: 900px; margin: 0 auto; }
-        .faq-search {
-            width: 100%; padding: 15px 25px; border-radius: 15px; border: 2px solid #e2e8f0;
-            margin-bottom: 30px; font-size: 1rem; outline: none; transition: 0.3s;
-        }
+        .faq-search { width: 100%; padding: 15px 25px; border-radius: 15px; border: 2px solid #e2e8f0; margin-bottom: 30px; font-size: 1rem; outline: none; transition: 0.3s; }
         .faq-item { background: white; margin-bottom: 12px; border-radius: 15px; border: 1px solid #e2e8f0; overflow: hidden; }
-        .faq-question {
-            width: 100%; padding: 20px; display: flex; justify-content: space-between; align-items: center;
-            background: none; border: none; cursor: pointer; text-align: left; font-weight: 600; font-size: 1.05rem; color: var(--text);
-        }
+        .faq-question { width: 100%; padding: 20px; display: flex; justify-content: space-between; align-items: center; background: none; border: none; cursor: pointer; text-align: left; font-weight: 600; font-size: 1.05rem; color: var(--text); }
         .faq-answer { max-height: 0; overflow: hidden; transition: all 0.3s ease; padding: 0 20px; color: #4b5563; background: #fff; }
-        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 20px; }
+        .faq-item.active .faq-answer { max-height: 500px; padding-bottom: 20px; }
         .faq-icon { color: var(--primary); font-size: 1.2rem; transition: 0.3s; }
         .faq-item.active .faq-icon { transform: rotate(45deg); }
         .back-home { margin-bottom: 20px; color: var(--primary); display: inline-flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; }
 
-        /* Footer */
         footer { background: #111827; color: white; padding: 60px 8% 20px; border-radius: 50px 50px 0 0; margin-top: 50px; }
         .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 40px; }
 
-        @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; }
-            .hero-img img { width: 100%; margin-top: 40px; }
-            .teachers, .footer-grid { grid-template-columns: 1fr; }
-            .holiday-banner h2 { font-size: 1.4rem; }
-        }
+        #termsModal { display:none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
+        .modal-content { background-color: #fff; margin: 2% auto; padding: 40px; border-radius: 25px; width: 90%; max-width: 850px; max-height: 85vh; overflow-y: auto; position: relative; text-align: left; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+        .terms-section { margin-bottom: 25px; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; }
+        .terms-section h3 { color: var(--primary); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .terms-section p, .terms-section li { font-size: 0.95rem; color: #4b5563; margin-bottom: 8px; }
+        .terms-section ul { padding-left: 20px; list-style: disc; }
+        
+        @media (max-width: 768px) { .hero { flex-direction: column; text-align: center; } .hero-img img { width: 100%; margin-top: 40px; } .teachers, .footer-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
     <nav>
         <div class="logo" onclick="showPage('home')">GIA SƯ NGỌC TRÂM</div>
         <ul class="nav-links">
@@ -128,7 +111,9 @@
     <div id="main-content">
         <div class="holiday-banner">
             <h2>🇻🇳 Chào mừng Đại lễ 30/4 - 1/5 🇻🇳</h2>
-            <p>Kỷ niệm 51 năm Ngày Giải phóng miền Nam & Quốc tế Lao động. Gia sư Ngọc Trâm chúc quý phụ huynh và học sinh kỳ nghỉ lễ hạnh phúc!</p>
+            <p>Kỷ niệm 51 năm Ngày Giải phóng miền Nam & Quốc tế Lao động. Gia sư Ngọc Trâm chúc quý phụ huynh và học sinh kỳ nghỉ lễ hạnh phúc!
+            <p>Lưu ý:Hiện tại web chỉ vận hành chạy thử sau khi triển khai sẽ có thông báo quý phụ huynh có thể hoạt động bình thường thông qua zalo cô lan mọi điều trong web chỉ là chạy thử nghiệm không có giá trị và chúng tôi sẽ không chịu trách nhiệm
+           </p>
         </div>
 
         <section class="hero" id="home">
@@ -167,7 +152,7 @@
                     <div>
                         <span class="badge">Dược sĩ Đại học</span>
                         <h3>Cô Ngọc Trâm</h3>
-                        <p>Phụ trách Hóa - Sinh-Lí. Kinh nghiệm giảng dạy tư duy khoa học và thực tiễn.</p>
+                        <p>Phụ trách Hóa - Sinh - Lí. Kinh nghiệm giảng dạy tư duy khoa học và thực tiễn.</p>
                     </div>
                 </div>
                 <div class="teacher-box">
@@ -183,11 +168,64 @@
         <section id="register">
             <div class="form-section">
                 <h2 class="section-title" style="margin-bottom: 10px;">Kết Nối Với Chúng Mình</h2>
-                <p>Chọn mục bạn muốn để thực hiện nhanh qua Google Form</p>
-                <div class="btn-group">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNJI_jTbnxgTdzbI_wMSOASiErqsiO53i3o1jMgbSTNY8zkQ/viewform?usp=publish-editor" class="btn-form btn-reg">📝 ĐĂNG KÝ HỌC</a>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScejlUrdLJEnDn1-F1kZlY4lRTklFqzpmocsKWRw_Z6Tgr7TQ/viewform?usp=publish-editor" class="btn-form btn-feed">⭐ GỬI ĐÁNH GIÁ</a>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSechlu5GihR8lxfnImShoT3B_ethjTDtvBOO6kvdcbRIVCJbQ/viewform?usp=publish-editor" target="_blank" class="btn-form btn-leave">🛌 XIN NGHỈ HỌC</a>
+                <div class="tab-box">
+                    <div class="tab-nav">
+                        <button class="tab-item active" onclick="activeTab(event, 'tab-reg')">📝 ĐĂNG KÝ</button>
+                        <button class="tab-item" onclick="activeTab(event, 'tab-fee')">💰 HỌC PHÍ</button>
+                        <button class="tab-item" onclick="activeTab(event, 'tab-leave')">🛌 XIN NGHỈ</button>
+                        <button class="tab-item" onclick="activeTab(event, 'tab-feed')">⭐ ĐÁNH GIÁ</button>
+                    </div>
+                    
+                    <div id="tab-reg" class="tab-pane active">
+                        <p>Để lại thông tin để chúng mình tư vấn cho bạn nhé!</p><br>
+                        <a id="reg_link" href="javascript:void(0)" onclick="handleRegClick()" class="btn-form btn-reg disabled">MỞ FORM ĐĂNG KÝ</a>
+                        
+                        <div class="terms-acceptance">
+                            <input type="checkbox" id="accept_terms" onchange="toggleRegButton()">
+                            <span>Tôi đã đọc và đồng ý với <a href="javascript:void(0)" onclick="openModal()">Điều khoản & Điều kiện</a></span>
+                        </div>
+                    </div>
+
+                    <div id="tab-fee" class="tab-pane">
+                        <div id="step-1">
+                            <p style="margin-bottom: 20px;">Vui lòng nhập tên học sinh trước khi thanh toán:</p>
+                            <input type="text" id="payer_name" placeholder="Ví dụ: Nguyễn Văn A" 
+                                   style="width:80%; max-width:300px; padding:15px; border-radius:12px; border:2px solid var(--primary); outline:none; font-weight:bold; text-align:center; margin-bottom:20px;">
+                            <br>
+                            <button onclick="confirmName()" class="btn-form btn-reg">XÁC NHẬN TÊN</button>
+                        </div>
+
+                        <div id="step-2" class="hidden-step">
+                            <div class="qr-wrap">
+                                <div id="timer">02:00</div>
+                                <div class="qr-code-box">
+                                    <p style="font-weight: 800; color: #065f46; margin-bottom: 10px;">MB BANK - GIA SƯ NGỌC TRÂM</p>
+                                    <img id="qr_image" src="" width="220" style="border-radius:10px; border: 5px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                                    <p style="margin-top:15px; font-size:0.9rem;">Nội dung CK: <br><b id="display_content" style="color:var(--holiday-red); font-size:1.1rem;"></b></p>
+                                </div>
+                                <div style="text-align:center;">
+                                    <p style="margin-bottom:15px; color:#666;">Bạn đã thực hiện chuyển khoản chưa?</p>
+                                    <button onclick="finalConfirm()" class="btn-form" style="background:#10b981; color:white;">XÁC NHẬN ĐÃ CHUYỂN PHÍ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="step-3" class="hidden-step" style="text-align:center; padding:40px 0;">
+                            <div style="font-size: 4rem; margin-bottom: 15px;">✅</div>
+                            <h2 style="color:#10b981;">Chúng tôi đã nhận được thông tin xác nhận chuyển khoản!</h2>
+                            <p style="margin-top:15px;">Cảm ơn phụ huynh đã tin tưởng. Hệ thống đang quay về trang chủ...</p>
+                        </div>
+                    </div>
+
+                    <div id="tab-leave" class="tab-pane">
+                        <p>Xin nghỉ học trực tuyến qua Google Form</p><br>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSechlu5GihR8lxfnImShoT3B_ethjTDtvBOO6kvdcbRIVCJbQ/viewform" target="_blank" class="btn-form btn-leave">MỞ FORM XIN NGHỈ</a>
+                    </div>
+
+                    <div id="tab-feed" class="tab-pane">
+                        <p>Chúng mình luôn lắng nghe ý kiến từ bạn</p><br>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScejlUrdLJEnDn1-F1kZlY4lRTklFqzpmocsKWRw_Z6Tgr7TQ/viewform" target="_blank" class="btn-form btn-feed">GỬI ĐÁNH GIÁ</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -202,77 +240,129 @@
         </div>
     </div>
 
+    <div id="termsModal">
+        <div class="modal-content">
+            <h2 style="text-align: center; color: var(--primary); font-size: 1.8rem; margin-bottom: 10px;">ĐIỀU KHOẢN & ĐIỀU KIỆN DỊCH VỤ</h2>
+            <p style="text-align: center; font-weight: bold; color: #666;">CƠ SỞ GIA SƯ NGỌC TRÂM - CẬP NHẬT 2026</p>
+            <hr style="margin: 20px 0; border: 0; border-top: 2px solid #eee;">
+            
+            <div style="line-height: 1.8; color: #333;">
+                <div class="terms-section">
+                    <h3>📌 CHƯƠNG I: QUY ĐỊNH CHUNG</h3>
+                    <p><strong>Điều 1: Đối tượng áp dụng</strong><br>Tất cả học sinh và phụ huynh đăng ký học tại cơ sở Gia sư Ngọc Trâm (bao gồm cả hình thức trực tiếp và trực tuyến).</p>
+                    <p><strong>Điều 2: Chấp thuận</strong><br>Việc sử dụng website và hoàn tất đăng ký học đồng nghĩa với việc Quý Phụ huynh đã đọc, hiểu và cam kết tuân thủ các điều khoản này.</p>
+                </div>
+
+                <div class="terms-section">
+                    <h3>📚 CHƯƠNG II: QUY TRÌNH HỌC TẬP</h3>
+                    <p><strong>Điều 3: Kiểm tra năng lực</strong><br>Mỗi học sinh sẽ thực hiện bài test đầu vào để xác định kiến thức hổng. Gia sư dựa vào kết quả này để thiết kế lộ trình riêng biệt.</p>
+                    <p><strong>Điều 4: Cam kết chất lượng</strong><br>Gia sư cam kết cung cấp kiến thức chuẩn bộ Giáo dục, hỗ trợ giải đáp thắc mắc bài tập trên trường 24/7 qua Zalo.</p>
+                    <p><strong>Điều 5: Tài liệu học tập</strong><br>Tài liệu chuyên sâu do cơ sở biên soạn sẽ được cung cấp miễn phí. Học sinh không được phép sao chép, phát tán tài liệu này ra bên ngoài cho mục đích thương mại.</p>
+                </div>
+
+                <div class="terms-section">
+                    <h3>💰 CHƯƠNG III: HỌC PHÍ & THANH TOÁN</h3>
+                    <p><strong>Điều 6: Chu kỳ đóng học phí</strong><br>Học phí được tính theo tháng (đóng vào đầu tháng từ ngày 1 đến ngày 5) hoặc theo gói buổi học tùy thỏa thuận.</p>
+                    <p><strong>Điều 7: Quy trình thanh toán QR</strong><br>Quý khách sử dụng mã QR trên website để thanh toán. Mã QR có hiệu lực trong 120 giây. Sau khi hết hạn, vui lòng thao tác lại để tránh sai sót giao dịch.</p>
+                    <p><strong>Điều 8: Hoàn phí</strong><br>Học phí sẽ không được hoàn trả nếu học sinh tự ý nghỉ giữa chừng mà không có lý do chính đáng. Trường hợp gia sư nghỉ dạy, học phí thừa sẽ được trả lại 100%.</p>
+                </div>
+
+                <div class="terms-section">
+                    <h3>🛌 CHƯƠNG IV: NGHỈ HỌC & HỌC BÙ</h3>
+                    <p><strong>Điều 9: Thông báo nghỉ</strong><br>Phụ huynh/Học sinh cần thông báo nghỉ qua hệ thống hoặc Zalo ít nhất 02 tiếng trước giờ học. Nếu thông báo sau thời gian này, buổi học vẫn được tính phí bình thường.</p>
+                    <p><strong>Điều 10: Tổ chức học bù</strong><br>Các buổi nghỉ đúng quy định sẽ được sắp xếp học bù vào cuối tuần hoặc thời gian rảnh của học sinh trong vòng 14 ngày kể từ ngày nghỉ.</p>
+                </div>
+
+                <div class="terms-section">
+                    <h3>🛡️ CHƯƠNG V: TRÁCH NHIỆM & BẢO MẬT</h3>
+                    <p><strong>Điều 11: Trách nhiệm của học sinh</strong><br>Đi học đúng giờ, chuẩn bị đầy đủ dụng cụ học tập và làm bài tập về nhà theo yêu cầu.</p>
+                    <p><strong>Điều 12: Bảo mật thông tin</strong><br>Chúng tôi cam kết không chia sẻ số điện thoại, địa chỉ hoặc kết quả học tập của học sinh cho bất kỳ bên thứ ba nào khi chưa có sự đồng ý của phụ huynh.</p>
+                </div>
+
+                <div class="terms-section">
+                    <h3>⚖️ CHƯƠNG VI: ĐIỀU KHOẢN CUỐI CÙNG</h3>
+                    <p>Mọi tranh chấp phát sinh sẽ được ưu tiên giải quyết thông qua thương lượng giữa Gia sư và Phụ huynh trên tinh thần vì lợi ích học tập của học sinh.</p>
+                </div>
+
+                <p style="margin-top: 30px; font-style: italic; text-align: right; font-weight: bold; color: var(--primary);">"Lưu ý:Hiện tại web chỉ vận hành chạy thử sau khi triển khai sẽ có thông báo quý phụ huynh có thể hoạt động bình thường thông qua zalo cô lan mọi điều trong web chỉ là chạy thử nghiệm không có giá trị và chúng tôi sẽ không chịu trách nhiệm"</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px; position: sticky; bottom: 0; background: white; padding-top: 10px;">
+                <button onclick="closeModal()" class="btn-form btn-reg" style="width: 100%;">TÔI ĐÃ ĐỌC VÀ ĐỒNG Ý VỚI CÁC ĐIỀU KHOẢN TRÊN</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-grid">
             <div>
                 <h2 style="color: var(--primary); margin-bottom: 20px;">GIA SƯ NGỌC TRÂM</h2>
                 <p>Nơi trao gửi niềm tin, gặt hái tri thức. Chúng tôi tự hào đồng hành cùng thế hệ trẻ Việt Nam.</p>
+                <p style="margin-top: 15px;"><a href="javascript:void(0)" onclick="openModal()" style="color: #94a3b8; text-decoration: underline; font-size: 0.8rem;">Điều khoản & Điều kiện dịch vụ</a></p>
             </div>
             <div>
                 <h3>Thông Tin Liên Hệ</h3>
-                <p style="margin-top: 15px;">📍 Địa chỉ: Khu phố 3 ,Minh Thành,Chơn Thành,Đồng Nai</p>
+                <p style="margin-top: 15px;">📍 Địa chỉ: Khu phố 3 ,Minh Thành,Chơn Thành,Bình Phước(Trước sáp nhập)</p>
                 <a href="tel:0967737207" style="color: var(--secondary); font-weight: bold;">📞 Gọi ngay: 0967.737.207</a>
             </div>
         </div>
-        <div style="text-align: center; border-top: 1px solid #333; padding-top: 20px; font-size: 0.8rem; color: #666;">
-            © 2026 Giabao elite. All rights reserved.
-        </div>
+        <div style="text-align: center; border-top: 1px solid #333; padding-top: 20px; font-size: 0.8rem; color: #666;">© 2026 Giabao elite. All rights reserved.</div>
     </footer>
 
     <script>!function(s,u,b,i,z){var o,t,r,y;s[i]||(s._sbzaccid=z,s[i]=function(){s[i].q.push(arguments)},s[i].q=[],s[i]("setAccount",z),r=["widget.subiz.net","storage.googleapis"+(t=".com"),"app.sbz.workers.dev",i+"a"+(o=function(k,t){var n=t<=6?5:o(k,t-1)+o(k,t-3);return k!==t?n:n.toString(32)})(20,20)+t,i+"b"+o(30,30)+t,i+"c"+o(40,40)+t],(y=function(k){var t,n;s._subiz_init_2094850928430||r[k]&&(t=u.createElement(b),n=u.getElementsByTagName(b)[0],t.async=1,t.src="https://"+r[k]+"/sbz/app.js?accid="+z,n.parentNode.insertBefore(t,n),setTimeout(y,2e3,k+1))})(0))}(window,document,"script","subiz", "acsqiwmbnyhvwszkiwaq")</script>
 
     <script>
         const faqData = [
-            { q: "1. Trung tâm này dạy những môn nào?", a: "Toán, Lý, Hóa, Văn, Anh (tùy trung tâm)." },
-            { q: "2. Có lớp ôn thi kiểm tra 15 phút/1 tiết không?", a: "Có, luyện đầy đủ theo chương trình trên lớp." },
-            { q: "3. Có luyện thi chuyển cấp không?", a: "Có, luyện thi vào 10 và 12." },
-            { q: "4. Lớp có đông không?", a: "Thường 10–25 học sinh/lớp." },
-            { q: "5. Một buổi học bao lâu?", a: "Khoảng 90–120 phút." },
-            { q: "6. Có chọn giáo viên không?", a: "Một số trung tâm có cho chọn." },
-            { q: "7. Thầy cô có dễ hiểu không?", a: "Có, đa số dạy dễ hiểu và chi tiết." },
-            { q: "8. Có sửa bài kỹ không?", a: "Có, chữa từng câu cho học sinh." },
-            { q: "9. Có bài tập về nhà không?", a: "Có, giao theo mức độ từng học sinh." },
-            { q: "10. Có kiểm tra định kỳ không?", a: "Có, kiểm tra hàng tuần/tháng." },
-            { q: "11. Không hiểu bài có hỏi lại được không?", a: "Được, hỏi trực tiếp tại lớp." },
-            { q: "12. Có học bù không?", a: "Một số trung tâm có hỗ trợ học bù." },
-            { q: "13. Có chia lớp theo trình độ không?", a: "Có, chia theo yếu – trung bình – giỏi." },
-            { q: "14. Có lớp nâng cao không?", a: "Có." },
-            { q: "15. Có lớp cho học sinh yếu không?", a: "Có lớp căn bản." },
-            { q: "16. Có tài liệu riêng không?", a: "Có tài liệu do trung tâm biên soạn." },
-            { q: "17. Có mẹo làm bài nhanh không?", a: "Có." },
-            { q: "18. Có luyện đề thật không?", a: "Có." },
-            { q: "19. Có học online không?", a: "Có cả online và offline." },
-            { q: "20. Có video xem lại không?", a: "Một số trung tâm có." },
-            { q: "21. Có đổi lớp không phù hợp không?", a: "Có thể đổi." },
-            { q: "22. Có áp lực học không?", a: "Không quá áp lực, có lộ trình phù hợp." },
-            { q: "23. Có thi thử không?", a: "Có." },
-            { q: "24. Có kèm riêng không?", a: "Có lớp 1 kèm 1." },
-            { q: "25. Có hỗ trợ mất gốc không?", a: "Có." },
-            { q: "26. Học phí bao nhiêu?", a: "Khoảng 1–3 triệu/tháng." },
-            { q: "27. Đóng theo buổi hay tháng?", a: "Theo tháng hoặc khóa." },
-            { q: "28. Có giảm học phí không?", a: "Có ưu đãi." },
-            { q: "29. Có cam kết điểm không?", a: "Không cam kết điểm tuyệt đối." },
-            { q: "30. Giáo viên có kinh nghiệm không?", a: "Có, nhiều giáo viên lâu năm." },
-            { q: "31. Trung tâm có giấy phép không?", a: "Trung tâm uy tín thì có." },
-            { q: "32. Có an toàn không?", a: "Có giám sát, đảm bảo an toàn." },
-            { q: "33. Lịch học có linh hoạt không?", a: "Có buổi tối và cuối tuần." },
-            { q: "34. Có nhồi nhét không?", a: "Không, học theo lộ trình." },
-            { q: "35. Có theo dõi học sinh không?", a: "Có." },
-            { q: "36. Có báo cáo kết quả không?", a: "Có gửi phụ huynh." },
-            { q: "37. Có liên hệ phụ huynh không?", a: "Có qua Zalo/điện thoại." },
-            { q: "38. Có dạy nâng cao không?", a: "Có." },
-            { q: "39. Có giữ học sinh quá giờ không?", a: "Không." },
-            { q: "40. Con yếu có theo kịp không?", a: "Có lớp riêng hỗ trợ." },
-            { q: "41. Có cam kết đầu ra không?", a: "Cam kết tiến bộ." },
-            { q: "42. Có lớp 1 kèm 1 không?", a: "Có." },
-            { q: "43. Có hỗ trợ tâm lý không?", a: "Một số nơi có." },
-            { q: "44. Có dạy kỹ năng thi không?", a: "Có." },
-            { q: "45. Trung tâm có uy tín không?", a: "Tùy trung tâm." },
-            { q: "46. Có học thử không?", a: "Có 1–2 buổi." },
-            { q: "47. Có hoàn tiền không?", a: "Một số trung tâm có." },
-            { q: "48. Có lớp buổi tối không?", a: "Có." },
-            { q: "49. Có lớp cuối tuần không?", a: "Có." },
-            { q: "50. Có gần nhà không?", a: "Tùy cơ sở." }
+            {q:"1. Trung tâm nhận dạy từ lớp mấy?", a:"Chúng tôi chuyên dạy kèm cho học sinh từ lớp 6 đến lớp 9, đặc biệt tập trung vào ôn thi chuyển cấp vào lớp 10."},
+            {q:"2. Lớp học có bao nhiêu học sinh?", a:"Để đảm bảo chất lượng, mỗi lớp học tại nhà thường chỉ từ 1-5 học sinh, giúp gia sư theo sát từng em."},
+            {q:"3. Có dạy kèm 1-1 tại nhà học sinh không?", a:"Có, chúng tôi cung cấp dịch vụ gia sư dạy kèm 1-1 tại nhà phụ huynh trong khu vực Chơn Thành, Bình Phước."},
+            {q:"4. Học phí tính theo buổi hay theo tháng?", a:"Phụ huynh có thể linh hoạt chọn đóng theo tháng (vào đầu tháng) hoặc đóng theo gói buổi học tùy theo thỏa thuận."},
+            {q:"5. Làm sao để biết trình độ của con khi mới bắt đầu?", a:"Mọi học sinh khi đăng ký đều được thực hiện một bài kiểm tra năng lực đầu vào miễn phí để đánh giá lỗ hổng kiến thức."},
+            {q:"6. Gia sư có cam kết điểm số không?", a:"Chúng tôi cam kết học sinh sẽ tiến bộ rõ rệt sau 1 tháng nếu tuân thủ đầy đủ lộ trình và làm bài tập đầy đủ. Điểm số sẽ phản ánh sự nỗ lực này."},
+            {q:"7. Nếu học sinh nghỉ học có được học bù không?", a:"Có, nếu phụ huynh báo trước 2 tiếng, chúng tôi sẽ sắp xếp buổi dạy bù vào thời gian sớm nhất."},
+            {q:"8. Trung tâm có dạy môn Tiếng Anh không?", a:"Hiện tại chúng tôi tập trung mạnh nhất vào Toán, Lý, Hóa và Luyện chữ đẹp. Tuy nhiên, chúng tôi có cộng tác viên dạy Anh văn nếu phụ huynh có nhu cầu."},
+            {q:"9. Tài liệu học tập có phải mua thêm không?", a:"Hoàn toàn không. Mọi giáo trình và phiếu bài tập chuyên sâu do cô Ngọc Trâm biên soạn đều được cung cấp miễn phí."},
+            {q:"10. Gia sư có hỗ trợ giải bài tập ngoài giờ không?", a:"Có, học sinh có thể gửi bài tập thắc mắc qua Zalo bất cứ lúc nào, gia sư sẽ phản hồi ngay khi có thể."},
+            {q:"11. Học phí lớp 6 là bao nhiêu?", a:"Học phí thay đổi tùy theo số môn và số buổi học trong tuần. Quý phụ huynh vui lòng liên hệ hotline để nhận báo giá chính xác nhất."},
+            {q:"12. Có lớp luyện chữ đẹp cho học sinh cấp 2 không?", a:"Có, chúng tôi có lớp rèn chữ và tư thế ngồi học cho các em có nét chữ chưa chuẩn, giúp các em tự tin hơn trong các bài kiểm tra."},
+            {q:"13. Phụ huynh có được cập nhật tình hình học tập thường xuyên không?", a:"Hàng tháng, gia sư sẽ gửi báo cáo chi tiết về ý thức học tập và kết quả các bài kiểm tra định kỳ của học sinh cho phụ huynh."},
+            {q:"14. Có dạy online không?", a:"Chúng tôi có triển khai lớp học online qua Google Meet cho các học sinh ở xa hoặc trong trường hợp bất khả kháng."},
+            {q:"15. Đăng ký học như thế nào?", a:"Phụ huynh có thể nhấn vào tab 'ĐĂNG KÝ' trên website này, tích chọn đồng ý điều khoản và điền thông tin vào form."},
+            {q:"16. Thanh toán học phí bằng cách nào?", a:"Phụ huynh có thể trả tiền mặt trực tiếp hoặc sử dụng tính năng thanh toán QR tự động tại tab 'HỌC PHÍ' trên trang web."},
+            {q:"17. Cô Ngọc Trâm trực tiếp dạy môn gì?", a:"Cô Ngọc Trâm (Dược sĩ ĐH) trực tiếp phụ trách các môn khoa học tự nhiên như Hóa học, Sinh học và Vật lý."},
+            {q:"18. Lớp học có điều hòa không?", a:"Có, phòng học tại cơ sở được trang bị đầy đủ máy lạnh, ánh sáng chuẩn để học sinh có môi trường học tập thoải mái nhất."},
+            {q:"19. Học sinh yếu mất căn bản có theo kịp không?", a:"Chúng tôi có lộ trình 'Lấy lại căn bản thần tốc' dành riêng cho học sinh mất gốc, giảng dạy chậm và kỹ cho đến khi các em hiểu bài."},
+            {q:"20. Có được học thử không?", a:"Học sinh được học thử 1 buổi đầu tiên để làm quen với phương pháp giảng dạy của gia sư trước khi quyết định học chính thức."},
+            {q:"21. Thời gian mỗi buổi học là bao lâu?", a:"Mỗi buổi học thường kéo dài từ 90 phút đến 120 phút tùy theo khối lượng kiến thức."},
+            {q:"22. Có lớp học vào cuối tuần không?", a:"Có, chúng tôi có các lớp sáng/chiều Thứ 7 và Chủ Nhật dành cho học sinh có lịch học chính khóa dày đặc."},
+            {q:"23. Nếu gia sư nghỉ dạy thì thế nào?", a:"Trường hợp gia sư có việc đột xuất phải nghỉ, chúng tôi sẽ thông báo trước và hoàn trả phí buổi đó hoặc sắp xếp dạy bù."},
+            {q:"24. Trung tâm nằm ở đâu tại Chơn Thành?", a:"Địa chỉ tại Khu phố 3, Minh Thành, Chơn Thành, Bình Phước (gần các trường học trong khu vực)."},
+            {q:"25. Học sinh có phải làm bài tập về nhà không?", a:"Bắt buộc. Bài tập về nhà giúp củng cố 50% kiến thức đã học trên lớp."},
+            {q:"26. Có ôn thi vào các trường chuyên không?", a:"Có, chúng tôi có giáo án nâng cao dành cho các bạn có mục tiêu thi vào lớp chọn, trường chuyên."},
+            {q:"27. Có giảm học phí khi đăng ký theo nhóm không?", a:"Có, khi đăng ký nhóm từ 3 bạn trở lên, trung tâm sẽ có chính sách giảm học phí ưu đãi."},
+            {q:"28. Hình thức dạy online có hiệu quả không?", a:"Dạy online của chúng tôi có tương tác trực tiếp, yêu cầu học sinh bật cam và có bảng điện tử hỗ trợ, hiệu quả đạt 90% so với học trực tiếp."},
+            {q:"29. Làm sao để xin nghỉ học 1 buổi?", a:"Phụ huynh truy cập tab 'XIN NGHỈ' trên website và điền form thông báo cho chúng tôi trước 2 tiếng."},
+            {q:"30. Gia sư có dạy thay đổi theo sách giáo khoa mới không?", a:"Có, chúng tôi cập nhật liên tục theo chương trình GDPT mới nhất của Bộ Giáo dục & Đào tạo."},
+            {q:"31. Có lớp cho học sinh tiểu học không?", a:"Hiện tại chúng tôi chỉ tập trung chuyên sâu cho khối Trung học cơ sở (lớp 6-9)."},
+            {q:"32. Khi nào thì nên bắt đầu ôn thi vào lớp 10?", a:"Tốt nhất nên bắt đầu từ đầu năm học lớp 9 hoặc sớm hơn từ hè lớp 8 để giảm áp lực."},
+            {q:"33. Trung tâm có hỗ trợ tư vấn hướng nghiệp không?", a:"Chúng tôi thường xuyên trò chuyện và tư vấn cho các em chọn khối thi, chọn trường cấp 3 phù hợp với năng lực."},
+            {q:"34. Có cần chuẩn bị máy tính cầm tay không?", a:"Có, học sinh học Toán, Lý, Hóa từ lớp 6 trở lên nên trang bị máy tính Casio đời mới để thực hành."},
+            {q:"35. Nội dung chuyển khoản học phí như thế nào?", a:"Hệ thống sẽ tự động tạo nội dung: 'Hoc sinh [Tên] chuyen khoan hoc phi' khi bạn sử dụng mã QR trên web."},
+            {q:"36. QR thanh toán có an toàn không?", a:"Đây là mã VietQR chuẩn ngân hàng, đảm bảo chính xác số tài khoản và nội dung, tránh chuyển nhầm."},
+            {q:"37. Nếu chuyển khoản sai nội dung phải làm sao?", a:"Vui lòng liên hệ ngay hotline 0967.737.207 để cô Trâm đối soát và xác nhận thủ công."},
+            {q:"38. Gia sư có nghiêm khắc không?", a:"Chúng tôi kết hợp giữa sự nghiêm khắc trong học tập và sự thấu hiểu, gần gũi như người chị, người bạn để các em không bị áp lực."},
+            {q:"39. Có dạy kèm môn Ngữ Văn không?", a:"Hiện tại chúng tôi tập trung vào khối tự nhiên. Môn Văn sẽ được hỗ trợ thông qua tài liệu tham khảo và phương pháp lập dàn ý."},
+            {q:"40. Học sinh có được đổi giờ học không?", a:"Có thể đổi giờ nếu các lớp khác còn chỗ trống và được sự đồng ý của gia sư."},
+            {q:"41. Có tổ chức thi thử không?", a:"Trước các kỳ thi học kỳ và thi chuyển cấp, chúng tôi tổ chức các buổi thi thử như thật để rèn luyện tâm lý cho học sinh."},
+            {q:"42. Con tôi lười học thì gia sư làm thế nào?", a:"Chúng tôi sẽ tìm hiểu nguyên nhân (do chán môn học hay do hổng kiến thức) để thay đổi phương pháp, khơi gợi hứng thú bằng các ví dụ thực tế."},
+            {q:"43. Website này do ai quản lý?", a:"Website chính thức của Gia sư Ngọc Trâm, do đội ngũ Giabao elite hỗ trợ kỹ thuật."},
+            {q:"44. Có dạy vào các ngày lễ không?", a:"Các ngày lễ lớn theo quy định nhà nước học sinh được nghỉ. Lịch học bù sẽ được báo sau."},
+            {q:"45. Đánh giá của các phụ huynh cũ như thế nào?", a:"Quý phụ huynh có thể xem đánh giá tại tab 'ĐÁNH GIÁ' hoặc trên Fanpage chính thức."},
+            {q:"46. Có dạy kèm theo nhóm tại nhà học sinh không?", a:"Có, nếu phụ huynh gom được nhóm bạn gần nhà, gia sư sẽ đến tận nơi giảng dạy."},
+            {q:"47. Học phí có tăng trong năm học không?", a:"Học phí thường được giữ cố định trong suốt một năm học để phụ huynh yên tâm."},
+            {q:"48. Gia sư có bằng cấp gì?", a:"Đội ngũ gồm Dược sĩ Đại học và các giáo viên có bằng cử nhân sư phạm, giàu kinh nghiệm dạy kèm."},
+            {q:"49. Tôi muốn dừng học thì báo trước bao lâu?", a:"Phụ huynh vui lòng báo trước ít nhất 1 tuần để chúng tôi hoàn tất hồ sơ và học phí thừa (nếu có)."},
+            {q:"50. Số điện thoại khẩn cấp khi không liên hệ được gia sư?", a:"Quý phụ huynh gọi trực tiếp hotline: 0967.737.207 (Cô Ngọc Trâm)."}
         ];
 
         const faqList = document.getElementById('faqList');
@@ -294,20 +384,89 @@
             if(pageId === 'faq') {
                 home.classList.add('hidden');
                 faq.classList.remove('hidden');
-                window.scrollTo(0,0);
             } else {
                 faq.classList.add('hidden');
                 home.classList.remove('hidden');
-                window.scrollTo(0,0);
+            }
+            window.scrollTo(0,0);
+        }
+
+        function activeTab(evt, tabName) {
+            var i, pane, items;
+            pane = document.getElementsByClassName("tab-pane");
+            for (i = 0; i < pane.length; i++) { pane[i].style.display = "none"; pane[i].classList.remove("active"); }
+            items = document.getElementsByClassName("tab-item");
+            for (i = 0; i < items.length; i++) { items[i].classList.remove("active"); }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+            if(tabName === 'tab-fee') { resetPayment(); }
+        }
+
+        function toggleRegButton() {
+            const checkbox = document.getElementById('accept_terms');
+            const btn = document.getElementById('reg_link');
+            if(checkbox.checked) {
+                btn.classList.remove('disabled');
+            } else {
+                btn.classList.add('disabled');
             }
         }
 
+        function handleRegClick() {
+            const checkbox = document.getElementById('accept_terms');
+            if(!checkbox.checked) {
+                alert("Vui lòng tích vào ô 'Tôi đã đồng ý' để mở form đăng ký!");
+            } else {
+                window.open("https://docs.google.com/forms/d/e/1FAIpQLSeNJI_jTbnxgTdzbI_wMSOASiErqsiO53i3o1jMgbSTNY8zkQ/viewform", "_blank");
+            }
+        }
+
+        function openModal() { document.getElementById("termsModal").style.display = "block"; document.body.style.overflow = "hidden"; }
+        function closeModal() { document.getElementById("termsModal").style.display = "none"; document.body.style.overflow = "auto"; }
+
+        let timeLeft = 120; let timerId = null;
+        function confirmName() {
+            const name = document.getElementById('payer_name').value.trim();
+            if(name === "") { alert("Vui lòng nhập tên học sinh!"); return; }
+            const cleanName = name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d").replace(/Đ/g, "D");
+            const content = "Hoc sinh " + cleanName + " chuyen khoan hoc phi";
+            document.getElementById('display_content').innerText = "Học sinh " + name + " chuyển khoản học phí";
+            document.getElementById('qr_image').src = `https://api.vietqr.io/image/970422-0969718830-compact.jpg?addInfo=${encodeURIComponent(content)}`;
+            document.getElementById('step-1').style.display = 'none';
+            document.getElementById('step-2').classList.remove('hidden-step');
+            startTimer();
+        }
+
+        function startTimer() {
+            timeLeft = 120; updateTimerDisplay();
+            if(timerId) clearInterval(timerId);
+            timerId = setInterval(() => {
+                timeLeft--; updateTimerDisplay();
+                if(timeLeft <= 0) { clearInterval(timerId); alert("Hết thời gian! Vui lòng thao tác lại."); resetPayment(); }
+            }, 1000);
+        }
+        function updateTimerDisplay() {
+            const m = Math.floor(timeLeft/60); const s = timeLeft%60;
+            document.getElementById('timer').innerText = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+        }
+        function finalConfirm() {
+            clearInterval(timerId);
+            document.getElementById('step-2').classList.add('hidden-step');
+            document.getElementById('step-3').classList.remove('hidden-step');
+            setTimeout(() => { showPage('home'); location.reload(); }, 3500);
+        }
+        function resetPayment() {
+            clearInterval(timerId);
+            document.getElementById('step-1').style.display = 'block';
+            document.getElementById('step-2').classList.add('hidden-step');
+            document.getElementById('step-3').classList.add('hidden-step');
+            document.getElementById('payer_name').value = '';
+        }
         function filterFAQ() {
             const input = document.getElementById('faqSearch').value.toLowerCase();
-            const items = document.querySelectorAll('.faq-item');
-            items.forEach(item => {
-                const text = item.innerText.toLowerCase();
-                item.style.display = text.includes(input) ? "block" : "none";
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.style.display = item.innerText.toLowerCase().includes(input) ? "block" : "none";
             });
         }
     </script>
