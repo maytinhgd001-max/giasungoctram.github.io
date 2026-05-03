@@ -134,5 +134,54 @@
         </div>
     </div>
 
-</body>
+<div id="offline-overlay">
+    <div class="spinner"></div>
+    <p>Đang kết nối lại...</p>
+</div>
+
+<style>
+#offline-overlay{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#0f172a;
+    color:white;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:9999;
+}
+
+.spinner{
+    width:50px;
+    height:50px;
+    border:5px solid #ccc;
+    border-top:5px solid #38bdf8;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+    margin-bottom:15px;
+}
+
+@keyframes spin{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+</style>
+
+<script>
+const overlay = document.getElementById("offline-overlay");
+
+// khi mất mạng
+window.addEventListener("offline", () => {
+    overlay.style.display = "flex";
+});
+
+// khi có mạng lại
+window.addEventListener("online", () => {
+    overlay.style.display = "none";
+});
+</script></body>
 </html>
