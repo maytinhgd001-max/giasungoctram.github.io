@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Kiến thức này chưa được cập nhật</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        body {
+            background-color: #f0f7ff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2d3436;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 600px;
+        }
+
+        .error-code {
+            font-size: 120px;
+            font-weight: 700;
+            color: #0984e3;
+            line-height: 1;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Biểu tượng cái mũ cử nhân hoặc kính cận trang trí */
+        .error-code::after {
+            content: '🎓';
+            font-size: 40px;
+            position: absolute;
+            top: -10px;
+            right: -30px;
+            transform: rotate(15px);
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #2d3436;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #636e72;
+            line-height: 1.6;
+        }
+
+        .illustration {
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 30px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #0984e3;
+        }
+
+        .btn-primary {
+            background-color: #0984e3;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #74b9ff;
+            border-color: #74b9ff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(9, 132, 227, 0.3);
+        }
+
+        .btn-outline {
+            color: #0984e3;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: #0984e3;
+            color: white;
+        }
+
+        /* Animation đơn giản */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="error-code floating">404</div>
+        
+        <h1>Ối! Bạn lạc đường thật rồi!Huhu</h1>
+        
+        <p>
+            Trang bạn đang tìm kiếm không tồn tại hoặc đã được chuyển sang một "lớp học" mới. 
+            Đừng lo, gia sư luôn sẵn sàng đưa bạn trở lại lộ trình học tập!
+        </p>
+
+        <div class="btn-group">
+            <a href="/" class="btn btn-primary">Về trang chủ</a>
+            <a href="/khoa-hoc" class="btn btn-outline">Tìm khóa học</a>
+        </div>
+    </div>
+
+</body>
+</html>
