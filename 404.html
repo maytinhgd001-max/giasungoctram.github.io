@@ -171,17 +171,5 @@
 }
 </style>
 
-<script>
-const overlay = document.getElementById("offline-overlay");
-
-// khi mất mạng
-window.addEventListener("offline", () => {
-    overlay.style.display = "flex";
-});
-
-// khi có mạng lại
-window.addEventListener("online", () => {
-    overlay.style.display = "none";
-});
-</script></body>
+</body>
 </html>
