@@ -162,7 +162,129 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section><style>
+.feedback-section {
+  margin-top: 60px;
+  padding: 50px 20px;
+  background: linear-gradient(120deg, #eef2ff 0%, #fce7f3 100%);
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.feedback-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.feedback-sub {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.feedback-slider {
+  display: flex;
+  gap: 20px;
+  animation: slideFeedback 25s linear infinite;
+}
+
+.feedback-card {
+  min-width: 280px;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  position: relative;
+}
+
+.feedback-card:hover {
+  transform: translateY(-8px);
+}
+
+.feedback-text {
+  font-style: italic;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.feedback-name {
+  font-weight: 700;
+}
+
+.feedback-role {
+  font-size: 13px;
+  color: gray;
+}
+
+.stars {
+  color: gold;
+  margin-bottom: 10px;
+}
+
+/* dấu " */
+.feedback-card::before {
+  content: "“";
+  font-size: 45px;
+  color: #4f46e5;
+  position: absolute;
+  top: 5px;
+  left: 12px;
+}
+
+/* animation */
+@keyframes slideFeedback {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+</style>
+
+<div class="feedback-section">
+  <div class="feedback-title">💬 Phụ huynh & học sinh nói gì?</div>
+  <div class="feedback-sub">Hơn 500+ học sinh đã tin tưởng Gia Sư Ngọc Trâm</div>
+
+  <div class="feedback-slider">
+
+    <div class="feedback-card">
+      <div class="stars">★★★★★</div>
+      <div class="feedback-text">Con mình từ học trung bình lên khá chỉ sau 2 tháng. Gia sư dạy rất dễ hiểu!</div>
+      <div class="feedback-name">Nguyễn Minh Anh</div>
+      <div class="feedback-role">Phụ huynh</div>
+    </div>
+
+    <div class="feedback-card">
+      <div class="stars">★★★★★</div>
+      <div class="feedback-text">Trước em sợ môn Toán, giờ học tự tin hơn và điểm tăng rõ rệt.</div>
+      <div class="feedback-name">Trần Hoàng Nam</div>
+      <div class="feedback-role">Học sinh lớp 9</div>
+    </div>
+
+    <div class="feedback-card">
+      <div class="stars">★★★★★</div>
+      <div class="feedback-text">Gia sư rất tận tâm, theo sát từng buổi học. Phụ huynh rất yên tâm.</div>
+      <div class="feedback-name">Lê Thị Lan</div>
+      <div class="feedback-role">Phụ huynh</div>
+    </div>
+
+    <!-- duplicate cho mượt -->
+    <div class="feedback-card">
+      <div class="stars">★★★★★</div>
+      <div class="feedback-text">Con mình tiến bộ rõ rệt, cảm ơn trung tâm rất nhiều!</div>
+      <div class="feedback-name">Phạm Quốc Bảo</div>
+      <div class="feedback-role">Phụ huynh</div>
+    </div>
+
+    <div class="feedback-card">
+      <div class="stars">★★★★★</div>
+      <div class="feedback-text">Học rất dễ hiểu, không còn sợ môn khó nữa.</div>
+      <div class="feedback-name">Nguyễn Thảo Vy</div>
+      <div class="feedback-role">Học sinh lớp 8</div>
+    </div>
+
+  </div>
+</div>
 
         <section id="register">
             <div class="form-section">
