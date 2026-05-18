@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gia Bảo Elite - Hệ Thống Tính Điểm Linh Hoạt</title>
+    <title>Hệ Thống Tính Điểm Linh Hoạt-Gia sư Ngọc Trâm</title>
     <style>
         :root {
             --primary-color: #6c5ce7;
@@ -229,7 +229,7 @@
 
     <header>
         <h1>Gia Bảo Elite</h1>
-        <p>Hệ thống quản lý và tính toán điểm số thông minh dành cho học sinh THCS & THPT</p>
+        <p>Hệ thống quản lý và tính toán điểm số dành cho học sinh THCS & THPT</p>
     </header>
 
     <div class="container">
