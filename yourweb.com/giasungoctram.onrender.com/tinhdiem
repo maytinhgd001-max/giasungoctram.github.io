@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gia Bảo Elite - Hệ Thống Tính Điểm Linh Hoạt</title>
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --dark-color: #2d3436;
+            --light-color: #f5f6fa;
+            --success-color: #00b894;
+            --accent-color: #fdcb6e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: var(--dark-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            flex: 1; /* Đẩy footer xuống dưới cùng nếu nội dung ít */
+        }
+
+        /* Menu Hệ Thống */
+        .menu-tabs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            background: white;
+            border: none;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(108, 92, 231, 0.3);
+        }
+
+        /* Vùng Nội Dung */
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--light-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Giao diện nhập điểm */
+        .form-group {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        input[type="number"], textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #5b4bc4;
+            transform: scale(1.02);
+        }
+
+        .btn-success { background-color: var(--success-color); }
+        .btn-success:hover { background-color: #009476; }
+        .btn-warning { background-color: var(--accent-color); color: #2d3436; font-weight: bold;}
+        .btn-warning:hover { background-color: #e5b44f; }
+
+        .points-list {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .point-badge {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .alert-info {
+            background-color: #e3faf2;
+            color: var(--success-color);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-weight: bold;
+            border-left: 5px solid var(--success-color);
+        }
+
+        .hidden { display: none; }
+
+        .result-box {
+            background: #f0f3ff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .badge-card {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #2d3436;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* FOOTER BẢN QUYỀN */
+        footer {
+            background-color: #2d3436;
+            color: #b2bec3;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.95rem;
+            margin-top: 3rem;
+            border-top: 4px solid var(--primary-color);
+            letter-spacing: 0.5px;
+        }
+
+        footer strong {
+            color: white;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Gia Bảo Elite</h1>
+        <p>Hệ thống quản lý và tính toán điểm số thông minh dành cho học sinh THCS & THPT</p>
+    </header>
+
+    <div class="container">
+        <div class="menu-tabs">
+            <button class="tab-btn active" onclick="openTab('muc1')">📊 1. Tính Điểm Chi Tiết</button>
+            <button class="tab-btn" onclick="openTab('muc2')">🎯 2. Mục Tiêu Điểm Số</button>
+            <button class="tab-btn" onclick="openTab('muc3')">📝 3. Nhật Ký Học Tập</button>
+            <button class="tab-btn" onclick="openTab('muc4')">🏆 4. Elite Đẳng Cấp</button>
+        </div>
+
+        <div id="muc1" class="content-section active">
+            <h2>Hệ thống tính điểm học kỳ (Tự chọn số cột TX)</h2>
+            
+            <div class="form-group" id="tx-section">
+                <label for="diemTX">Nhập điểm thường xuyên của bạn (Hệ số 1, dưới 10 lần):</label>
+                <div style="display: flex; gap: 10px; margin-bottom: 1rem;">
+                    <input type="number" id="diemTX" min="0" max="10" step="0.25" placeholder="Nhập từng điểm rồi bấm Thêm. Ví dụ: 8">
+                    <button class="btn" id="btnThemTX" onclick="themDiemTX()">Thêm Điểm</button>
+                </div>
+                
+                <p>Các điểm TX đã nhập:</p>
+                <div class="points-list" id="listTX"><em>Chưa có điểm nào được nhập</em></div>
+                
+                <button class="btn btn-warning" id="btnChotTX" onclick="chotDiemTX()">Xác nhận đã ĐỦ điểm Thường Xuyên của trường bạn</button>
+                <div id="msgDuTX" class="alert-info hidden">🎉 Đã xác nhận xong điểm TX! Xin mời tiếp tục nhập điểm Giữa Kỳ phía dưới.</div>
+            </div>
+
+            <div class="form-group hidden" id="gk-section">
+                <label for="diemGK">Nhập điểm giữa kì (Hệ số 2):</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" id="diemGK" min="0" max="10" step="0.25" placeholder="Ví dụ: 8.5">
+                    <button class="btn btn-success" onclick="nhapGK()">Xác Nhận Điểm GK</button>
+                </div>
+            </div>
+
+            <div class="form-group hidden" id="ck-section">
+                <label for="diemCK">Nhập điểm cuối kì (Hệ số 3):</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" id="diemCK" min="0" max="10" step="0.25" placeholder="Ví dụ: 9">
+                    <button class="btn" style="background-color: #e84393;" onclick="tinhDiemHocKy()">Bấm Để Tính Điểm Trung Bình Môn</button>
+                </div>
+            </div>
+
+            <div id="ketQuaMuc1" class="result-box hidden"></div>
+            <button class="btn" style="margin-top: 1rem; background-color: #74b9ff;" onclick="resetMuc1()">Làm mới nhập lại từ đầu</button>
+        </div>
+
+        <div id="muc2" class="content-section">
+            <h2>Nhắm Mục Tiêu Học Tập</h2>
+            <p style="margin-bottom: 1rem; color: #666;">Nhập điểm trung bình bạn mong muốn đạt được, hệ thống Elite sẽ tính xem bạn cần bao nhiêu điểm cuối kì.</p>
+            <div class="form-group">
+                <label>Điểm Trung Bình mục tiêu muốn đạt:</label>
+                <input type="number" id="targetDTB" max="10" min="0" placeholder="Ví dụ: 8.0">
+            </div>
+            <div class="form-group">
+                <label>Điểm Trung Bình hiện tại (Điểm TX và GK trước đó):</label>
+                <input type="number" id="currentNay" max="10" min="0" placeholder="Nhập ĐTB các cột đã có">
+            </div>
+            <button class="btn" onclick="duToanDiem()">Tính Toán Mục Tiêu</button>
+            <div id="ketQuaMuc2" class="result-box hidden"></div>
+        </div>
+
+        <div id="muc3" class="content-section">
+            <h2>Nhật Ký & Nhắc Nhở Học Tập</h2>
+            <div class="form-group">
+                <label>Ghi chú bài tập/Lịch kiểm tra sắp tới:</label>
+                <textarea id="noteHocTap" rows="4" placeholder="Ví dụ: Thứ 3 kiểm tra 15p Lý, ôn tập chương 2..."></textarea>
+            </div>
+            <button class="btn" onclick="luuNhatKy()">Lưu Ghi Chú</button>
+            <div id="savedNotes" style="margin-top: 1.5rem;"></div>
+        </div>
+
+        <div id="muc4" class="content-section">
+            <h2>Bảng Xếp Hạng Danh Hiệu Gia Bảo Elite</h2>
+            <p style="margin-bottom: 1.5rem; color: #666;">Danh hiệu của bạn sẽ tự động cập nhật khi bạn hoàn thành tính điểm ở Mục 1.</p>
+            <div id="danhHieuBox" class="badge-card">
+                Chưa có dữ liệu điểm. Hãy tính điểm ở Mục 1 để nhận danh hiệu Elite tương ứng!
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Bản quyền thuộc về <strong>Gia Bảo Elite</strong>. Mọi quyền được bảo lưu.
+    </footer>
+
+    <script>
+        function openTab(tabId) {
+            let sections = document.querySelectorAll('.content-section');
+            let tabs = document.querySelectorAll('.tab-btn');
+            
+            sections.forEach(s => s.classList.remove('active'));
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        let mangDiemTX = [];
+        let diemGiuaKi = null;
+
+        function themDiemTX() {
+            let inputTX = document.getElementById('diemTX');
+            let value = parseFloat(inputTX.value);
+
+            if (isNaN(value) || value < 0 || value > 10) {
+                alert("Vui lòng nhập điểm hợp lệ từ 0 đến 10.");
+                return;
+            }
+
+            if (mangDiemTX.length < 10) {
+                mangDiemTX.push(value);
+                hienThiListTX();
+                inputTX.value = "";
+            } else {
+                alert("Hệ thống giới hạn tối đa nhập dưới 10 lần điểm TX.");
+            }
+        }
+
+        function hienThiListTX() {
+            let container = document.getElementById('listTX');
+            if (mangDiemTX.length === 0) {
+                container.innerHTML = "<em>Chưa có điểm nào được nhập</em>";
+                return;
+            }
+            container.innerHTML = mangDiemTX.map((d, index) => `<span class="point-badge">TX ${index+1}: ${d}đ</span>`).join('');
+        }
+
+        function chotDiemTX() {
+            if (mangDiemTX.length === 0) {
+                alert("Vui lòng nhập ít nhất 1 điểm thường xuyên trước khi xác nhận!");
+                return;
+            }
+            document.getElementById('diemTX').disabled = true;
+            document.getElementById('btnThemTX').disabled = true;
+            document.getElementById('msgDuTX').classList.remove('hidden');
+            document.getElementById('gk-section').classList.remove('hidden');
+        }
+
+        function nhapGK() {
+            let inputGK = document.getElementById('diemGK');
+            let value = parseFloat(inputGK.value);
+
+            if (isNaN(value) || value < 0 || value > 10) {
+                alert("Vui lòng nhập điểm Giữa Kì hợp lệ.");
+                return;
+            }
+
+            diemGiuaKi = value;
+            document.getElementById('ck-section').classList.remove('hidden');
+            alert("Đã ghi nhận điểm Giữa Kỳ. Vui lòng nhập điểm Cuối Kỳ để hệ thống Elite tính toán.");
+        }
+
+        function tinhDiemHocKy() {
+            let inputCK = document.getElementById('diemCK');
+            let diemCuoiKi = parseFloat(inputCK.value);
+
+            if (isNaN(diemCuoiKi) || diemCuoiKi < 0 || diemCuoiKi > 10) {
+                alert("Vui lòng nhập điểm Cuối Kì hợp lệ.");
+                return;
+            }
+
+            let tongTX = mangDiemTX.reduce((a, b) => a + b, 0);
+            let soCotTX = mangDiemTX.length;
+            
+            let tongHeSo = soCotTX + 2 + 3;
+            let diemTrungBinh = (tongTX + (diemGiuaKi * 2) + (diemCuoiKi * 3)) / tongHeSo;
+            diemTrungBinh = Math.round(diemTrungBinh * 100) / 100;
+
+            let ketQuaBox = document.getElementById('ketQuaMuc1');
+            ketQuaBox.classList.remove('hidden');
+            ketQuaBox.innerHTML = `
+                <h3>Kết Quả Tính Điểm TBM - Gia Bảo Elite</h3>
+                <p>• Tổng điểm các cột TX (${soCotTX} cột): <strong>${tongTX}</strong></p>
+                <p>• Điểm Giữa Kỳ (Hệ số 2): <strong>${diemGiuaKi}</strong></p>
+                <p>• Điểm Cuối Kỳ (Hệ số 3): <strong>${diemCuoiKi}</strong></p>
+                <p>• Cách tính hệ số chia: ${soCotTX} (TX) + 2 (GK) + 3 (CK) = <strong>Tổng hệ số là ${tongHeSo}</strong></p>
+                <hr style="margin: 0.8rem 0; border: 0.5px solid #ccc;">
+                <p style="font-size: 1.2rem; color: var(--primary-color);">➡️ Điểm Trung Bình Môn (TBM): <strong style="font-size: 1.6rem; color: #d63031;">${diemTrungBinh}</strong></p>
+            `;
+
+            capNhatDanhHieu(diemTrungBinh);
+        }
+
+        function resetMuc1() {
+            mangDiemTX = [];
+            diemGiuaKi = null;
+            document.getElementById('listTX').innerHTML = "<em>Chưa có điểm nào được nhập</em>";
+            document.getElementById('diemTX').disabled = false;
+            document.getElementById('btnThemTX').disabled = false;
+            document.getElementById('msgDuTX').classList.add('hidden');
+            document.getElementById('gk-section').classList.add('hidden');
+            document.getElementById('ck-section').classList.add('hidden');
+            document.getElementById('ketQuaMuc1').classList.add('hidden');
+            document.getElementById('diemGK').value = "";
+            document.getElementById('diemCK').value = "";
+        }
+
+        function duToanDiem() {
+            let target = parseFloat(document.getElementById('targetDTB').value);
+            let current = parseFloat(document.getElementById('currentNay').value);
+            
+            if(isNaN(target) || isNaN(current)) {
+                alert("Vui lòng nhập đủ thông tin dự toán.");
+                return;
+            }
+
+            let ketQuaBox = document.getElementById('ketQuaMuc2');
+            ketQuaBox.classList.remove('hidden');
+            
+            let canTren = (target * 3) - current; 
+            if (canTren > 10) {
+                ketQuaBox.innerHTML = `⚠️ Mục tiêu hơi cao! Bạn cần tới <strong>${canTren.toFixed(1)}</strong> điểm cuối kì mới đạt được. Hãy cố gắng hết sức nhé!`;
+            } else if (canTren < 0) {
+                ketQuaBox.innerHTML = `✨ Quá an toàn! Bạn chỉ cần trên <strong>0</strong> điểm là đạt mục tiêu rồi.`;
+            } else {
+                ketQuaBox.innerHTML = `🎯 Để đạt ĐTB mong muốn là <strong>${target}</strong>, bạn cần đạt tối thiểu <strong>${canTren.toFixed(2)}</strong> điểm ở bài kiểm tra Cuối Kì.`;
+            }
+        }
+
+        function luuNhatKy() {
+            let text = document.getElementById('noteHocTap').value;
+            if(!text.trim()) return;
+            
+            let container = document.getElementById('savedNotes');
+            let now = new Date();
+            let timeStr = `${now.getHours()}:${now.getMinutes()} - ${now.getDate()}/${now.getMonth()+1}`;
+            
+            container.innerHTML = `
+                <div style="background: #fff8f0; padding:1rem; border-radius:8px; margin-bottom:0.5rem; border-left:4px solid var(--accent-color)">
+                    <small style="color:#aaa">${timeStr}</small>
+                    <p>${text}</p>
+                </div>
+            ` + container.innerHTML;
+            document.getElementById('noteHocTap').value = "";
+        }
+
+        function capNhatDanhHieu(dtb) {
+            let danhHieuBox = document.getElementById('danhHieuBox');
+            let danhHieu = "";
+            let mauSac = "";
+
+            if (dtb >= 9.0) {
+                danhHieu = "💎 Elite Kim Cương - Học Thần Xuất Thế!";
+                mauSac = "linear-gradient(135deg, #74b9ff, #0984e3)";
+            } else if (dtb >= 8.0) {
+                danhHieu = "🥇 Elite Vàng - Học Bá Uy Nghiêm!";
+                mauSac = "linear-gradient(135deg, #ffeaa7, #fdcb6e)";
+            } else if (dtb >= 6.5) {
+                danhHieu = "🥈 Elite Bạc - Trông Bạn Rất Có Tiềm Năng!";
+                mauSac = "linear-gradient(135deg, #dfe6e9, #b2bec3)";
+            } else {
+                danhHieu = "🌱 Elite Tập Sự - Cần Thêm Một Chút Bứt Phá!";
+                mauSac = "linear-gradient(135deg, #fab1a0, #ff7675)";
+            }
+
+            danhHieuBox.style.background = mauSac;
+            danhHieuBox.style.color = dtb >= 9.0 ? "white" : "#2d3436";
+            danhHieuBox.innerHTML = `Điểm trung bình học kỳ của bạn: ${dtb}<br><br><span style="font-size:1.5rem">${danhHieu}</span>`;
+        }
+    </script>
+</body>
+</html>
